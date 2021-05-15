@@ -11,14 +11,8 @@ const rootReduser = combineReducers({
 
 export const store= createStore(rootReduser, loadState())
 
-store.subscribe(()=>{
-    saveState({
-        counter: store.getState().counter
-    });
-})
+
 
 export type AppStateType=ReturnType<typeof rootReduser>
-
-type AppStoreStype = typeof store
 
 

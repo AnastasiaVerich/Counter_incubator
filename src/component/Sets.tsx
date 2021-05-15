@@ -1,20 +1,23 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './counter.module.css';
 import {Button} from "./Button";
 
-type SetsType = {
-    minInSets: number
-    maxInSets: number
-    onChangeMin: any
-    onChangeMax: any
-    setInc: any
+type SetsType = StateSetsConteinerType & DispatchSetsConteinerType
+export type StateSetsConteinerType={
     minC: number
     maxC: number
-
+    min: number
+    minInSets: number
+    maxInSets: number
+}
+export type DispatchSetsConteinerType={
+    onChangeMin: (e: ChangeEvent<HTMLInputElement>)=>void
+    onChangeMax: (ee: ChangeEvent<HTMLInputElement>)=>void
+    setInc: any
 }
 
 export function Sets(props: SetsType) {
-    let disabled = props.maxInSets === props.maxC && props.minInSets === props.minC
+    let disabled = props.maxInSets === props.maxC && props.minInSets === props.min
 
 
     return (
@@ -34,7 +37,6 @@ export function Sets(props: SetsType) {
                         disabled={disabled}
                         text={"Set"}/>
                 </div>
-                {console.log(props.minInSets)}
             </div>
         </div>
     )

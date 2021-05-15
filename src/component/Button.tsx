@@ -2,7 +2,7 @@ import s from "./counter.module.css";
 import React from "react";
 
 type ButtonType = {
-    onClickCollback: any
+    onClickCollback: ()=>void
     disabled: boolean
     text: string
 }
